@@ -1,10 +1,17 @@
 class Player
   def hand
     # コンソールを入力待ち状態にし、プレイヤーがコンソールから打ち込んだ値を出力する処理のメソッドの処理をこの中に作成する
+    while true
     p "[0]:グー¥n[1]:チョキ¥n[2]:パー"
-    player_hand = gets.to_i
+    player_hand = gets.chomp
     # p input.chomp!
     # player_hand.class
+      unless player_hand == "0" || player_hand == "1" || player_hand == "2"
+        puts "無効な数字です"
+      else
+        return player_hand.to_i
+      end
+    end
   end
 end
 
@@ -21,7 +28,7 @@ class Janken
     # その際、あいこもしくはグー、チョキ、パー以外の値入力時には、もう一度ジャンケンをする
     # 相手がグー、チョキ、パーのうち、何を出したのかも表示させる
     jankens = ["グー","チョキ","パー"]
-    # puts "あなたの手:#{jankens[player_hand]}, 相手の手:#{jankens[enemy_hand]}"
+    # puts "あなたの手:#{jankens[player_hand]}, 相手の手:#{jankens[enemy_hand]}"      hand = gets.chomp
     a = (player_hand - enemy_hand + 3)%3
     if a == 0
       puts "あいこで"
@@ -35,7 +42,7 @@ class Janken
     else
       puts "あなたの負けです"
       return next_game = false
-    end
+  end
   end
 end
 
